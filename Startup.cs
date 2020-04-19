@@ -36,7 +36,7 @@ namespace WebApplication1
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-			
+
 			services.AddAuthorization(options =>
 			{
 				options.AddPolicy(

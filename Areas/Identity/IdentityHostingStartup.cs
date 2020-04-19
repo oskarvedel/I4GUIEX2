@@ -1,14 +1,8 @@
-﻿using System;
+﻿using GUIEX2PROJECT.Areas.Identity;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using WebApplication1.Data;
 
-[assembly: HostingStartup(typeof(WebApplication1.Areas.Identity.IdentityHostingStartup))]
-namespace WebApplication1.Areas.Identity
+[assembly: HostingStartup(typeof(IdentityHostingStartup))]
+namespace GUIEX2PROJECT.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

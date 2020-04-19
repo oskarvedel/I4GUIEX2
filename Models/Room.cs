@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebApplication1.Models
+namespace GUIEX2PROJECT.Models
 {
     public class Room
     {

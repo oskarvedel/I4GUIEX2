@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace GUIEX2PROJECT.Models
 {
     public enum EmployeeEnum
     {
@@ -6,7 +8,7 @@
         Receptionist,
         Chef
     }
-    public class Employee
+    public class Employee : IdentityUser
     {
         public int EmployeeId { get; set; }
         public EmployeeEnum EmployeeType { get; set; }

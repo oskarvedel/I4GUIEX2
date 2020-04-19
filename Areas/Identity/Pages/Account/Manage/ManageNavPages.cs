@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Identity;
 
 namespace GUIEX2PROJECT.Areas.Identity.Pages.Account.Manage
 {

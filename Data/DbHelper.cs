@@ -13,7 +13,7 @@ namespace GUIEX2PROJECT.Data
         public static void SeedUsers(ApplicationDbContext db,UserManager<Employee> userManager)
         {
             //System.Data.Entity.MigrateDatabaseToLatestVersion;
-            string password = "password";
+            string password = "password1&";
             var user = new Employee
             {
                 UserName = "gonzalesthechef",

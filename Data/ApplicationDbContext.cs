@@ -20,6 +20,8 @@ namespace GUIEX2PROJECT.Data
             //modelbuilder.Entity<ApplicationUser>()
             //    .HasKey(e => e.Name);
 
+            base.OnModelCreating(modelbuilder);
+
             modelbuilder.Entity<Room>()
                 .HasKey(r => r.RoomNumber);
 

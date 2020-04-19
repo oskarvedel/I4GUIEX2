@@ -19,31 +19,6 @@ namespace GUIEX2PROJECT.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GUIEX2PROJECT.Models.BreakfastReservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<int>("NumberOfAdultReservations");
-
-                    b.Property<int>("NumberOfAdultsCheckedIn");
-
-                    b.Property<int>("NumberOfChildReservations");
-
-                    b.Property<int>("NumberOfChildrenCheckedIn");
-
-                    b.Property<int>("roomNumber");
-
-                    b.HasKey("ReservationId");
-
-                    b.HasIndex("roomNumber");
-
-                    b.ToTable("BreakfastReservations");
-                });
-
             modelBuilder.Entity("GUIEX2PROJECT.Models.Employee", b =>
                 {
                     b.Property<string>("Id")
@@ -105,19 +80,38 @@ namespace GUIEX2PROJECT.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("NumberOfAdults");
-
-                    b.Property<int>("NumberOfChildren");
-
                     b.HasKey("RoomNumber");
 
                     b.ToTable("Rooms");
+                });
 
-                    b.HasData(
-                        new { RoomNumber = 101, NumberOfAdults = 3, NumberOfChildren = 4 },
-                        new { RoomNumber = 202, NumberOfAdults = 1, NumberOfChildren = 1 },
-                        new { RoomNumber = 303, NumberOfAdults = 2, NumberOfChildren = 2 }
-                    );
+            modelBuilder.Entity("GUIEX2PROJECT.Models.RoomBooking", b =>
+                {
+                    b.Property<int>("BookingId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("NumOfAdultsInRoom");
+
+                    b.Property<int>("NumOfChildrenInRoom");
+
+                    b.Property<int>("NumberOfAdultBreakfastReservations");
+
+                    b.Property<int>("NumberOfAdultsCheckedInToBreakfast");
+
+                    b.Property<int>("NumberOfChildBreakfastReservations");
+
+                    b.Property<int>("NumberOfChildrenCheckedInToBreakfast");
+
+                    b.Property<int>("RoomNumber");
+
+                    b.HasKey("BookingId");
+
+                    b.HasIndex("RoomNumber");
+
+                    b.ToTable("RoomBookings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -234,11 +228,11 @@ namespace GUIEX2PROJECT.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("GUIEX2PROJECT.Models.BreakfastReservation", b =>
+            modelBuilder.Entity("GUIEX2PROJECT.Models.RoomBooking", b =>
                 {
                     b.HasOne("GUIEX2PROJECT.Models.Room", "room")
-                        .WithMany("BreakfastDates")
-                        .HasForeignKey("roomNumber")
+                        .WithMany("RoomBookings")
+                        .HasForeignKey("RoomNumber")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

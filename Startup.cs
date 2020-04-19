@@ -33,7 +33,7 @@ namespace GUIEX2PROJECT
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Employee>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -42,15 +42,15 @@ namespace GUIEX2PROJECT
             {
                 options.AddPolicy(
                     "ReceptionistAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("ReceptionistClaim"));
                 options.AddPolicy(
                     "RestaurantAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("WaiterClaim"));
                 options.AddPolicy(
                     "KitchenAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("ChefClaim"));
             });
         }

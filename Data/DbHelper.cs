@@ -12,17 +12,17 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedUsers(ApplicationDbContext db,UserManager<Employee> userManager)
         {
-            //System.Data.Entity.MigrateDatabaseToLatestVersion;
             string password = "password1&";
             var user = new Employee
             {
-                UserName = "gonzalesthechef",
+                UserName = "gonzales@gmail.com",
                 Email = "gonzales@gmail.com",
                 EmployeeId = "1",
                 EmployeeType = EmployeeEnum.Chef
             };
 
-            IdentityResult result = userManager.CreateAsync(user, password).Result;
+            var result = userManager.CreateAsync(user, password).Result;
+            
             
             if (result.Succeeded)
             {

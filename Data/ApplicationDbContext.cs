@@ -11,15 +11,14 @@ namespace GUIEX2PROJECT.Data
 			: base(options)
 		{
 		}
-        public DbSet<ApplicationUser> Employees { get; set; }
-        
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            //modelbuilder.Entity<ApplicationUser>()
-            //    .HasKey(e => e.Name);
+            modelbuilder.Entity<Employee>()
+                .HasKey(e => e.EmployeeId);
 
             modelbuilder.Entity<Room>()
                 .HasKey(r => r.RoomNumber);

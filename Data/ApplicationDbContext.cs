@@ -1,24 +1,24 @@
 ﻿using GUIEX2PROJECT.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
 
 namespace GUIEX2PROJECT.Data
 {
-	public class ApplicationDbContext : IdentityDbContext
+	public class ApplicationDbContext : IdentityDbContext<Employee>
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
 		{
 		}
         public DbSet<Employee> Employees { get; set; }
+        
         public DbSet<Room> Rooms { get; set; }
         public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            modelbuilder.Entity<Employee>()
-                .HasKey(e => e.EmployeeId);
+            //modelbuilder.Entity<ApplicationUser>()
+            //    .HasKey(e => e.Name);
 
             modelbuilder.Entity<Room>()
                 .HasKey(r => r.RoomNumber);

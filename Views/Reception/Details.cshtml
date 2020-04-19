@@ -1,0 +1,54 @@
+﻿@model GUIEX2PROJECT.Models.BreakfastReservation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BreakfastReservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfChildReservations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfChildReservations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAdultReservations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAdultReservations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfChildrenCheckedIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAdultsCheckedIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.room.RoomNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ReservationId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

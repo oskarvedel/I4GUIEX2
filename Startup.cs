@@ -76,7 +76,7 @@ namespace GUIEX2PROJECT
 
             app.UseAuthentication();
 
-            DbHelper.SeedUsers(context, userManager);
+            DbHelper.SeedData(context, userManager);
 
             app.UseMvc(routes =>
             {

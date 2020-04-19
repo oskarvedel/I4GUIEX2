@@ -13,7 +13,6 @@ namespace GUIEX2PROJECT.Data
 {
     public class DbHelper
     {
-        
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager)
         {
             
@@ -27,6 +26,16 @@ namespace GUIEX2PROJECT.Data
             {
                 var rooms = new List<Room>();
                 r = new Room()
+                {
+                    RoomNumber = 1
+                }
+        }
+            
+            var r = db.RoomBookings.FirstOrDefault();
+            if (r == null)
+            {
+                var roombookings = new List<RoomBooking>();
+                r = new RoomBooking()
                 {
                     RoomNumber = 1,
                     NumberOfAdults = 2,

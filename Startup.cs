@@ -35,10 +35,7 @@ namespace GUIEX2PROJECT
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Employee>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            //services.AddScoped<SignInManager<Employee>, SignInManager<Employee>>();
-            //services.AddScoped<UserManager<Employee>, UserManager<Employee>>();
-
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAuthorization(options =>

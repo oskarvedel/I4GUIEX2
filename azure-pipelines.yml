@@ -13,5 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: dotnet ef migrations add anothermigraton
+- script: dotnet ef database update
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'

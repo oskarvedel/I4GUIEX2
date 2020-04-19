@@ -22,7 +22,7 @@ namespace GUIEX2PROJECT.Data
         }
         public static void SeedUsers(UserManager<Employee> userManager)
         {
-            string password = "password1&";
+            string password = "Password_1";
             var user = new Employee
             {
                 UserName = "gonzales@gmail.com",

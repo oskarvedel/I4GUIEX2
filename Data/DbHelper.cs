@@ -18,11 +18,10 @@ namespace GUIEX2PROJECT.Data
         {
             
             SeedUsers(userManager);
-            db.SaveChangesAsync();
         }
         public static void SeedUsers(UserManager<Employee> userManager)
         {
-            string password = "Password_1";
+            string password = "nicepw_1";
             var user = new Employee
             {
                 UserName = "gonzales@gmail.com",

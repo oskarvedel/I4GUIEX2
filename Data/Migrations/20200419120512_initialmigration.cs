@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApplication1.Data.Migrations
+namespace GUIEX2PROJECT.Data.Migrations
 {
     public partial class initialmigration : Migration
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1.csproj", "{EC3C72B3-54A5-48B8-A6A7-9ED7A570F2DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIEX2PROJECT", "GUIEX2PROJECT.csproj", "{0AD9115D-74FE-42DD-AFC6-3721C46AE4ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EC3C72B3-54A5-48B8-A6A7-9ED7A570F2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC3C72B3-54A5-48B8-A6A7-9ED7A570F2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC3C72B3-54A5-48B8-A6A7-9ED7A570F2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC3C72B3-54A5-48B8-A6A7-9ED7A570F2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AD9115D-74FE-42DD-AFC6-3721C46AE4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AD9115D-74FE-42DD-AFC6-3721C46AE4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AD9115D-74FE-42DD-AFC6-3721C46AE4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AD9115D-74FE-42DD-AFC6-3721C46AE4ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

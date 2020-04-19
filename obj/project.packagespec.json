@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/WebApplication1/WebApplication1.csproj",
-    "projectName": "WebApplication1",
-    "projectPath": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/WebApplication1/WebApplication1.csproj",
-    "outputPath": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/WebApplication1/obj/",
+    "projectUniqueName": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/GUIEX2PROJECT/GUIEX2PROJECT.csproj",
+    "projectName": "GUIEX2PROJECT",
+    "projectPath": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/GUIEX2PROJECT/GUIEX2PROJECT.csproj",
+    "outputPath": "/Users/Oskar/OneDrive/onedrive local/Mine dokumenter/IKT - local/4. semester/GUI/GUI Repo/GUIEX2PROJECT/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

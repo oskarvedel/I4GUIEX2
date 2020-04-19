@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class BreakfastReservation
-    {
+
         enum ChildOrAdult
         {
 
@@ -23,5 +22,5 @@ namespace WebApplication1.Models
             public Room room { get; set; }
             public int roomNumber { get; set; }
         }
-    }
+
 }

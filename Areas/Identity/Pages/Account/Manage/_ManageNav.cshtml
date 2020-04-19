@@ -1,6 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
+﻿@using GUIEX2PROJECT.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Employee> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

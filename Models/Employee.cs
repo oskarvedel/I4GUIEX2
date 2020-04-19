@@ -10,7 +10,7 @@ namespace GUIEX2PROJECT.Models
     }
     public class Employee : IdentityUser
     {
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         public EmployeeEnum EmployeeType { get; set; }
     }
 }

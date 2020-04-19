@@ -1,17 +1,16 @@
 ﻿using GUIEX2PROJECT.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
 
 namespace GUIEX2PROJECT.Data
 {
-	public class ApplicationDbContext : IdentityDbContext
+	public class ApplicationDbContext : IdentityDbContext<Employee>
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
 		{
 		}
-        public DbSet<ApplicationUser> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         
         public DbSet<Room> Rooms { get; set; }
         public DbSet<BreakfastReservation> BreakfastReservations { get; set; }

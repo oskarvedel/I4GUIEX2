@@ -18,7 +18,7 @@ namespace GUIEX2PROJECT.Data
             {
                 UserName = "gonzalesthechef",
                 Email = "gonzales@gmail.com",
-                EmployeeId = 1,
+                EmployeeId = "1",
                 EmployeeType = EmployeeEnum.Chef
             };
 

@@ -19,15 +19,18 @@ namespace GUIEX2PROJECT.Data
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Room>()
-                .HasKey(r => r.RoomNumber);
+                .HasKey(r => r.RoomId);
 
             modelbuilder.Entity<RoomBooking>()
                 .HasKey(r => r.BookingId);
 
             modelbuilder.Entity<RoomBooking>()
-                .HasOne<Room>(r => r.room)
+                .HasOne<Room>(r => r.Room)
                 .WithMany(r => r.RoomBookings)
-                .HasForeignKey(r => r.RoomNumber);
+                .HasForeignKey(r => r.RoomId);
+
+            modelbuilder.Entity<Room>()
+                .Property(r => r.RoomNumber);
         }
     }
 }

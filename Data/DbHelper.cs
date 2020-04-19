@@ -8,6 +8,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using GUIEX2PROJECT.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GUIEX2PROJECT.Data
 {
@@ -15,10 +16,17 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager)
         {
-            SeedRoomsAndReservations(db);
-            SeedEmployees(userManager);
+            //DeleteAndCreateDatabase(db);
+            //SeedRoomsAndReservations(db);
+            //SeedEmployees(userManager);
         }
 
+        private static void DeleteAndCreateDatabase(ApplicationDbContext db)
+        {
+            db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
+        }
+            
         private static void SeedRoomsAndReservations(ApplicationDbContext db)
         {
             var r = db.Rooms.FirstOrDefault();
@@ -77,7 +85,6 @@ namespace GUIEX2PROJECT.Data
                     RoomNumber = 10
                 };
                 rooms.Add(r);
-
                 db.Rooms.AddRange(rooms);
                 db.SaveChangesAsync();
             }
@@ -89,7 +96,6 @@ namespace GUIEX2PROJECT.Data
                 rb = new RoomBooking()
                 {
                     BookingId = 1,
-                    RoomNumber = 1,
                     NumOfAdultsInRoom = 2,
                     NumOfChildrenInRoom = 2,
                     NumberOfAdultBreakfastReservations = 1,
@@ -101,7 +107,6 @@ namespace GUIEX2PROJECT.Data
                 rb = new RoomBooking()
                 {
                     BookingId = 2,
-                    RoomNumber = 2,
                     NumOfAdultsInRoom = 4,
                     NumOfChildrenInRoom = 1,
                     NumberOfAdultBreakfastReservations = 4,

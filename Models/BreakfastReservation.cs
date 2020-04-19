@@ -2,8 +2,7 @@
 
 namespace GUIEX2PROJECT.Models
 {
-    public class BreakfastReservation
-    {
+
         enum ChildOrAdult
         {
 
@@ -20,5 +19,5 @@ namespace GUIEX2PROJECT.Models
             public Room room { get; set; }
             public int roomNumber { get; set; }
         }
-    }
+
 }

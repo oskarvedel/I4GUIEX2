@@ -109,54 +109,51 @@ namespace GUIEX2PROJECT.Data
                     NumberOfAdultsCheckedInToBreakfast = 1,
                     NumberOfChildrenCheckedInToBreakfast = 1
                 };
-
                 db.RoomBookings.AddRange(roombookings);
                 db.SaveChangesAsync();
             }
         }
+
+        private static void SeedEmployees(UserManager<Employee> userManager)
+        {
+            string password = "nicepw_1";
+
+            var user = new Employee
+            {
+                UserName = "gonzales@gmail.com",
+                Email = "gonzales@gmail.com",
+                EmployeeId = "1",
+                EmployeeType = EmployeeEnum.Chef
+            };
+
+            var result = userManager.CreateAsync(user, password).Result;
+            user = new Employee
+            {
+                UserName = "alina@gmail.com",
+                Email = "alina@gmail.com",
+                EmployeeId = "2",
+                EmployeeType = EmployeeEnum.Receptionist
+            };
+            result = userManager.CreateAsync(user, password).Result;
+            if (result.Succeeded)
+            {
+                var receptionistClaim = new Claim("Receptionist", "Yes");
+                userManager.AddClaimAsync(user, receptionistClaim);
+            }
+
+            user = new Employee
+            {
+                UserName = "alina@gmail.com",
+                Email = "alina@gmail.com",
+                EmployeeId = "3",
+                EmployeeType = EmployeeEnum.Waiter
+            };
+            result = userManager.CreateAsync(user, password).Result;
+            if (result.Succeeded)
+            {
+                var waiterClaim = new Claim("Waiter", "Yes");
+                userManager.AddClaimAsync(user, waiterClaim);
+            }
+        }
     }
-
-    private static void SeedEmployees(UserManager<Employee> userManager)
-    {
-    string password = "nicepw_1";
-
-    var user = new Employee
-    {
-        UserName = "gonzales@gmail.com",
-        Email = "gonzales@gmail.com",
-        EmployeeId = "1",
-        EmployeeType = EmployeeEnum.Chef
-    };
-
-    var result = userManager.CreateAsync(user, password).Result;
-    user = new Employee
-    {
-        UserName = "alina@gmail.com",
-        Email = "alina@gmail.com",
-        EmployeeId = "2",
-        EmployeeType = EmployeeEnum.Receptionist
-    };
-    result = userManager.CreateAsync(user, password).Result;
-    if (result.Succeeded)
-    {
-        var receptionistClaim = new Claim("Receptionist", "Yes");
-        userManager.AddClaimAsync(user, receptionistClaim);
-    }
-
-    user = new Employee
-    {
-        UserName = "alina@gmail.com",
-        Email = "alina@gmail.com",
-        EmployeeId = "3",
-        EmployeeType = EmployeeEnum.Waiter
-    };
-    result = userManager.CreateAsync(user, password).Result;
-    if (result.Succeeded)
-    {
-        var waiterClaim = new Claim("Waiter", "Yes");
-        userManager.AddClaimAsync(user, waiterClaim);
-    }
-    }
-}
-
 }

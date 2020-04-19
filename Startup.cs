@@ -42,15 +42,15 @@ namespace GUIEX2PROJECT
             {
                 options.AddPolicy(
                     "ReceptionistAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("ReceptionistClaim"));
                 options.AddPolicy(
                     "RestaurantAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("WaiterClaim"));
                 options.AddPolicy(
                     "KitchenAccess",
-                    policybuilder => policybuilder
+                    policyBuilder => policyBuilder
                         .RequireClaim("ChefClaim"));
             });
         }

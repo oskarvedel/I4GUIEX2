@@ -12,6 +12,7 @@ namespace GUIEX2PROJECT.Data
 		{
 		}
         public DbSet<ApplicationUser> Employees { get; set; }
+        
         public DbSet<Room> Rooms { get; set; }
         public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
 

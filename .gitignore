@@ -359,3 +359,4 @@ MigrationBackup/
 #rider
 .idea
 appsettings.json
+/Migrations/

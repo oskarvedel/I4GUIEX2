@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplication1.Data;
 
 namespace WebApplication1
 {
@@ -41,6 +36,22 @@ namespace WebApplication1
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy(
+					"ReceptionistAccess",
+					policybuilder => policybuilder
+						.RequireClaim());
+				options.AddPolicy(
+					"RestaurantAccess",
+					policybuilder => policybuilder
+						.RequireClaim());
+				options.AddPolicy(
+					"KitchenAccess",
+					policybuilder => policybuilder
+						.RequireClaim());
+			}
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

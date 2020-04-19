@@ -15,11 +15,11 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager)
         {
-            
+            SeedRoomsAndReservations(db);
             SeedEmployees(userManager);
         }
-        
-        private static void Seed(ApplicationDbContext db)
+
+        private static void SeedRoomsAndReservations(ApplicationDbContext db)
         {
             var r = db.Rooms.FirstOrDefault();
             if (r == null)
@@ -28,102 +28,135 @@ namespace GUIEX2PROJECT.Data
                 r = new Room()
                 {
                     RoomNumber = 1
-                }
-        }
-            
-            var r = db.RoomBookings.FirstOrDefault();
-            if (r == null)
-            {
-                var roombookings = new List<RoomBooking>();
-                r = new RoomBooking()
-                {
-                    RoomNumber = 1,
-                    NumberOfAdults = 2,
-                    NumberOfChildren = 2
                 };
                 rooms.Add(r);
                 r = new Room()
                 {
-                    RoomNumber = 2,
-                    NumberOfAdults = 2,
-                    NumberOfChildren = 4
+                    RoomNumber = 2
+                };
+                rooms.Add(r);
+
+                r = new Room()
+                {
+                    RoomNumber = 3
+                };
+                rooms.Add(r);
+
+                r = new Room()
+                {
+                    RoomNumber = 4
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 5
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 6
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 7
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 8
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 9
+                };
+                rooms.Add(r);
+                r = new Room()
+                {
+                    RoomNumber = 10
                 };
                 rooms.Add(r);
 
                 db.Rooms.AddRange(rooms);
                 db.SaveChangesAsync();
             }
-            var b = db.BreakfastReservations.FirstOrDefault();
-            if (b == null)
+
+            var rb = db.RoomBookings.FirstOrDefault();
+            if (rb == null)
             {
-                var breakfastReservations = new List<BreakfastReservation>();
-                b = new BreakfastReservation()
+                var roombookings = new List<RoomBooking>();
+                rb = new RoomBooking()
                 {
-                    DateTime = DateTime.Today,
-                    NumberOfAdultReservations = ,
-                    NumberOfChildReservations = ,
-                    NumberOfAdultsCheckedIn = ,
-                    NumberOfChildrenCheckedIn = 
+                    BookingId = 1,
+                    RoomNumber = 1,
+                    NumOfAdultsInRoom = 2,
+                    NumOfChildrenInRoom = 2,
+                    NumberOfAdultBreakfastReservations = 1,
+                    NumberOfChildBreakfastReservations = 2,
+                    NumberOfAdultsCheckedInToBreakfast = 1,
+                    NumberOfChildrenCheckedInToBreakfast = 1
                 };
-                musics.Add(m);
-                m = new Music()
+                roombookings.Add(rb);
+                rb = new RoomBooking()
                 {
-                    Year = DateTime.Now.Year,
-                    Month = DateTime.Now.Month + 1,
-                    Name = "Tahoe Greg",
-                    Description = "Tahoe Greg&rsquo;s back from his tour. New songs. New stories. CDs are now available.",
-                    ThumbNailUrl = "gregthumb.jpg",
-                    ImageUrl = "greg.jpg"
+                    BookingId = 2,
+                    RoomNumber = 2,
+                    NumOfAdultsInRoom = 4,
+                    NumOfChildrenInRoom = 1,
+                    NumberOfAdultBreakfastReservations = 4,
+                    NumberOfChildBreakfastReservations = 1,
+                    NumberOfAdultsCheckedInToBreakfast = 1,
+                    NumberOfChildrenCheckedInToBreakfast = 1
                 };
-                musics.Add(m);
-                db.Musics.AddRange(musics);
+
+                db.RoomBookings.AddRange(roombookings);
                 db.SaveChangesAsync();
             }
         }
-        private static void SeedEmployees(UserManager<Employee> userManager)
-        {
-            string password = "nicepw_1";
-            var user = new Employee
-            {
-                UserName = "gonzales@gmail.com",
-                Email = "gonzales@gmail.com",
-                EmployeeId = "1",
-                EmployeeType = EmployeeEnum.Chef
-            };
-            
-            var result =  userManager.CreateAsync(user, password).Result;
-            
-            user = new Employee
-            {
-                UserName = "alina@gmail.com",
-                Email = "alina@gmail.com",
-                EmployeeId = "2",
-                EmployeeType = EmployeeEnum.Receptionist
-            };
-            
-            result =  userManager.CreateAsync(user, password).Result;
-
-            if (result.Succeeded)
-            {
-                var receptionistClaim = new Claim("Receptionist", "Yes");
-                userManager.AddClaimAsync(user, receptionistClaim);
-            }
-            
-            user = new Employee
-            {
-                UserName = "alina@gmail.com",
-                Email = "alina@gmail.com",
-                EmployeeId = "3",
-                EmployeeType = EmployeeEnum.Waiter
-            };
-            
-            result =  userManager.CreateAsync(user, password).Result;
-
-            if (result.Succeeded)
-            {
-                var waiterClaim = new Claim("Waiter", "Yes");
-                userManager.AddClaimAsync(user, waiterClaim);
-            }
-        }
     }
+
+    private static void SeedEmployees(UserManager<Employee> userManager)
+    {
+    string password = "nicepw_1";
+
+    var user = new Employee
+    {
+        UserName = "gonzales@gmail.com",
+        Email = "gonzales@gmail.com",
+        EmployeeId = "1",
+        EmployeeType = EmployeeEnum.Chef
+    };
+
+    var result = userManager.CreateAsync(user, password).Result;
+    user = new Employee
+    {
+        UserName = "alina@gmail.com",
+        Email = "alina@gmail.com",
+        EmployeeId = "2",
+        EmployeeType = EmployeeEnum.Receptionist
+    };
+    result = userManager.CreateAsync(user, password).Result;
+    if (result.Succeeded)
+    {
+        var receptionistClaim = new Claim("Receptionist", "Yes");
+        userManager.AddClaimAsync(user, receptionistClaim);
+    }
+
+    user = new Employee
+    {
+        UserName = "alina@gmail.com",
+        Email = "alina@gmail.com",
+        EmployeeId = "3",
+        EmployeeType = EmployeeEnum.Waiter
+    };
+    result = userManager.CreateAsync(user, password).Result;
+    if (result.Succeeded)
+    {
+        var waiterClaim = new Claim("Waiter", "Yes");
+        userManager.AddClaimAsync(user, waiterClaim);
+    }
+    }
+}
+
 }

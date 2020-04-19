@@ -85,6 +85,10 @@ namespace GUIEX2PROJECT.Data
                     RoomNumber = 10
                 };
                 rooms.Add(r);
+                foreach (Room in rooms)
+                {
+                    db.Rooms.Add(Room);
+                }
                 db.Rooms.AddRange(rooms);
                 db.SaveChangesAsync();
             }
@@ -92,7 +96,7 @@ namespace GUIEX2PROJECT.Data
             var rb = db.RoomBookings.FirstOrDefault();
             if (rb == null)
             {
-                var roombookings = new List<RoomBooking>();
+                var roomBookings = new List<RoomBooking>();
                 rb = new RoomBooking()
                 {
                     BookingId = 1,
@@ -103,7 +107,7 @@ namespace GUIEX2PROJECT.Data
                     NumberOfAdultsCheckedInToBreakfast = 1,
                     NumberOfChildrenCheckedInToBreakfast = 1
                 };
-                roombookings.Add(rb);
+                roomBookings.Add(rb);
                 rb = new RoomBooking()
                 {
                     BookingId = 2,
@@ -114,7 +118,8 @@ namespace GUIEX2PROJECT.Data
                     NumberOfAdultsCheckedInToBreakfast = 1,
                     NumberOfChildrenCheckedInToBreakfast = 1
                 };
-                db.RoomBookings.AddRange(roombookings);
+                roomBookings.Add(rb);
+                db.RoomBookings.AddRange(roomBookings);
                 db.SaveChangesAsync();
             }
         }

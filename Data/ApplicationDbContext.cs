@@ -9,9 +9,9 @@ namespace GUIEX2PROJECT.Data
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
-		{
-		}
-        public DbSet<ApplicationUser> Employees { get; set; }
+        { 
+        }
+        //public DbSet<ApplicationUser> Employees { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
 
@@ -19,6 +19,8 @@ namespace GUIEX2PROJECT.Data
         {
             //modelbuilder.Entity<ApplicationUser>()
             //    .HasKey(e => e.Name);
+
+            base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Room>()
                 .HasKey(r => r.RoomNumber);

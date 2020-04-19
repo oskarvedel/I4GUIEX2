@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace GUIEX2PROJECT.Models
 {
@@ -6,9 +6,6 @@ namespace GUIEX2PROJECT.Models
     {
         public int RoomNumber { get; set; }
 
-        public int NumberOfChildren { get; set; }
-        public int NumberOfAdults { get; set; }
-
-        public List<BreakfastReservation> BreakfastDates { get; set; }
+        public List<RoomBooking> RoomBookings{ get; set; }
     }
 }

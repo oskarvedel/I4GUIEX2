@@ -11,29 +11,23 @@ namespace GUIEX2PROJECT.Data
 		{
 		}
         public DbSet<Employee> Employees { get; set; }
-        
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<BreakfastReservation> BreakfastReservations { get; set; }
+        public DbSet<RoomBooking> RoomBookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            //modelbuilder.Entity<ApplicationUser>()
-            //    .HasKey(e => e.Name);
-
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Room>()
                 .HasKey(r => r.RoomNumber);
 
-            modelbuilder.Entity<BreakfastReservation>()
-                .HasKey(b => b.ReservationId);
+            modelbuilder.Entity<RoomBooking>()
+                .HasKey(r => r.BookingId);
 
-            modelbuilder.Entity<BreakfastReservation>()
-                .HasOne<Room>(b => b.room)
-                .WithMany(r => r.BreakfastDates)
-                .HasForeignKey(b => b.roomNumber);
-
-           
+            modelbuilder.Entity<RoomBooking>()
+                .HasOne<Room>(r => r.room)
+                .WithMany(r => r.RoomBookings)
+                .HasForeignKey(r => r.RoomNumber);
         }
     }
 }

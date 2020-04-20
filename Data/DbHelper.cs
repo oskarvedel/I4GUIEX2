@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager, ILogger log)
         {
-            DeleteAndCreateDatabase(db);
+            //DeleteAndCreateDatabase(db);
             SeedRooms(db, log);
             SeedRoomBookings(db, log);
             SeedEmployee(userManager, log);
@@ -40,6 +41,7 @@ namespace GUIEX2PROJECT.Data
             if (rb != null) return;
             rb = new RoomBooking()
             {
+                Date = DateTime.Today,
                 RoomNumber = 1,
                 NumOfAdultsInRoom = 2,
                 NumOfChildrenInRoom = 2,
@@ -52,6 +54,7 @@ namespace GUIEX2PROJECT.Data
             db.SaveChangesAsync().Wait();
             rb = new RoomBooking()
             {
+                Date = DateTime.Today,
                 RoomNumber = 2,
                 NumOfAdultsInRoom = 4,
                 NumOfChildrenInRoom = 1,

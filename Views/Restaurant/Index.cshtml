@@ -7,7 +7,6 @@
 <h2>Restaurant</h2>
 
 
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -35,6 +34,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.TotalChildrenNotCheckedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAdultsNotCheckedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNotCheckedIn)
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -65,9 +73,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomId)
             </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.TotalChildrenNotCheckedIn)
+            </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Check guests in!</a>
-            </td> 
+                @Html.DisplayFor(modelItem => item.TotalAdultsNotCheckedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNotCheckedIn)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Check Guests In!</a> |
+
+            </td>
         </tr>
 }
     </tbody>

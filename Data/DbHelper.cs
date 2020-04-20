@@ -17,8 +17,8 @@ namespace GUIEX2PROJECT.Data
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager)
         {
             //DeleteAndCreateDatabase(db);
-            SeedRoomsAndReservations(db);
-            SeedEmployees(userManager);
+            //SeedRoomsAndReservations(db);
+            //SeedEmployees(userManager);
         }
 
         private static void DeleteAndCreateDatabase(ApplicationDbContext db)
@@ -26,7 +26,7 @@ namespace GUIEX2PROJECT.Data
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
         }
-            
+
         private static void SeedRoomsAndReservations(ApplicationDbContext db)
         {
             var r = db.Rooms.FirstOrDefault();
@@ -85,42 +85,44 @@ namespace GUIEX2PROJECT.Data
                     RoomNumber = 10
                 };
                 rooms.Add(r);
-                foreach (var Room in rooms)
-                {
-                    db.Rooms.Add(Room);
-                }
                 db.Rooms.AddRange(rooms);
                 db.SaveChangesAsync();
-            }
 
-            var rb = db.RoomBookings.FirstOrDefault();
-            if (rb == null)
-            {
-                var roomBookings = new List<RoomBooking>();
-                rb = new RoomBooking()
+                var rb = db.RoomBookings.FirstOrDefault();
+                if (rb == null)
                 {
-                    BookingId = 1,
-                    NumOfAdultsInRoom = 2,
-                    NumOfChildrenInRoom = 2,
-                    NumberOfAdultBreakfastReservations = 1,
-                    NumberOfChildBreakfastReservations = 2,
-                    NumberOfAdultsCheckedInToBreakfast = 1,
-                    NumberOfChildrenCheckedInToBreakfast = 1
-                };
-                roomBookings.Add(rb);
-                rb = new RoomBooking()
-                {
-                    BookingId = 2,
-                    NumOfAdultsInRoom = 4,
-                    NumOfChildrenInRoom = 1,
-                    NumberOfAdultBreakfastReservations = 4,
-                    NumberOfChildBreakfastReservations = 1,
-                    NumberOfAdultsCheckedInToBreakfast = 1,
-                    NumberOfChildrenCheckedInToBreakfast = 1
-                };
-                roomBookings.Add(rb);
-                db.RoomBookings.AddRange(roomBookings);
-                db.SaveChangesAsync();
+                    var roomBookings = new List<RoomBooking>();
+                    rb = new RoomBooking()
+                    {
+                        RoomId = 1,
+                        BookingId = 1,
+                        NumOfAdultsInRoom = 2,
+                        NumOfChildrenInRoom = 2,
+                        NumberOfAdultBreakfastReservations = 1,
+                        NumberOfChildBreakfastReservations = 2,
+                        NumberOfAdultsCheckedInToBreakfast = 1,
+                        NumberOfChildrenCheckedInToBreakfast = 1
+                    };
+                    roomBookings.Add(rb);
+                    rb = new RoomBooking()
+                    {
+                        RoomId = 2,
+                        BookingId = 2,
+                        NumOfAdultsInRoom = 4,
+                        NumOfChildrenInRoom = 1,
+                        NumberOfAdultBreakfastReservations = 4,
+                        NumberOfChildBreakfastReservations = 1,
+                        NumberOfAdultsCheckedInToBreakfast = 1,
+                        NumberOfChildrenCheckedInToBreakfast = 1
+                    };
+                    roomBookings.Add(rb);
+
+                    foreach (var t1 in roomBookings)
+                    {
+                        db.RoomBookings.Add(t1);
+                        var task = Task.Delay(1000).ContinueWith(t => db.SaveChangesAsync());
+                    }
+                }
             }
         }
 
@@ -132,8 +134,8 @@ namespace GUIEX2PROJECT.Data
             {
                 UserName = "gonzales@gmail.com",
                 Email = "gonzales@gmail.com",
-                EmployeeId = "1",
-                EmployeeType = EmployeeEnum.Chef
+                //EmployeeId = "1",
+                //EmployeeType = EmployeeEnum.Chef
             };
 
             var result = userManager.CreateAsync(user, password).Result;

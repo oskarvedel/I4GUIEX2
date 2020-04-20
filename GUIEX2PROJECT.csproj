@@ -21,7 +21,19 @@
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Data\Migrations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Reception\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Reception\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Reception\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Reception\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Reception\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Restaurant\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Restaurant\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Restaurant\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Restaurant\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Restaurant\Index.cshtml" />
   </ItemGroup>
 
 </Project>

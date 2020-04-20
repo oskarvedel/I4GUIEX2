@@ -58,6 +58,14 @@ p {
     text-align: center;
 }
 
+table {
+    border: #0f0f0f;
+    align-content: center;
+    text-align: center;
+}
+
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */

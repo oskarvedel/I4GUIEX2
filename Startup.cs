@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace GUIEX2PROJECT
 {
@@ -57,7 +58,7 @@ namespace GUIEX2PROJECT
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<Employee> userManager,
-            ApplicationDbContext context)
+            ApplicationDbContext context, ILogger<Startup> log)
         {
             if (env.IsDevelopment())
             {
@@ -76,7 +77,7 @@ namespace GUIEX2PROJECT
 
             app.UseAuthentication();
 
-            DbHelper.SeedData(context, userManager);
+            DbHelper.SeedData(context, userManager, log);
 
             app.UseMvc(routes =>
             {

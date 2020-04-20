@@ -53,19 +53,21 @@ h1 {
 h2 {
     text-align: center;
 }
+h3 {
+    text-align: center;
+}
 p {
     align-content: center;
     text-align: center;
 }
 
-table {
-    border: #0f0f0f;
+table, th, td {
+    border: 1px solid black;
     align-content: center;
     text-align: center;
+    margin-left:auto;
+    margin-right:auto;
 }
-
-
-
 
 /* Sticky footer styles
 -------------------------------------------------- */

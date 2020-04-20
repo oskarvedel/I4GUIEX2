@@ -40,38 +40,10 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfChildrenInRoom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfAdultsInRoom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildrenCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultsCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
-            </td>
-        </tr>
-}
+    
+    @foreach (var item in Model)
+    {
+        Response.Write(item.membername+"<===>"+item.total+"<br/>");
+    }
     </tbody>
 </table>

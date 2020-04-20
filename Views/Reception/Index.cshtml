@@ -3,74 +3,38 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <h2>Reception</h2>
 
-<p>
-    <a asp-action="Create">Create new room booking</a>
-</p>
+<h3>Breakfast Buffet Overview</h3>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+                @Html.DisplayNameFor(model => model.RoomNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Room)
+                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
             </th>
-            <th></th>
         </tr>
+        <p>
+            <a asp-action="Create">Create new booking</a>
+        </p>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Date.Day)//@Html.DisplayFor(modelItem => item.Date.Month)/@Html.DisplayFor(modelItem => item.Date.Year)
+                @Html.DisplayFor(modelItem => item.RoomNumber)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.NumOfChildrenInRoom)
+                @Html.DisplayFor(modelItem => item.NumberOfChildrenCheckedInToBreakfast)/@Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumOfAdultsInRoom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildrenCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultsCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomId)
-            </td>v    
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                @Html.DisplayFor(modelItem => item.NumberOfAdultsCheckedInToBreakfast)/@Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
             </td>
         </tr>
 }

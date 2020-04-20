@@ -1,17 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using GUIEX2PROJECT.Models;
-using System;
-using System.Diagnostics;
-using System.Threading;
-using Microsoft.EntityFrameworkCore;
 
 namespace GUIEX2PROJECT.Data
 {
@@ -21,9 +13,8 @@ namespace GUIEX2PROJECT.Data
         {
             DeleteAndCreateDatabase(db);
             SeedRooms(db, log);
-            //SeedReservations(db, log);
-            //SeedEmployee(userManager, log);
-            
+            SeedRoomBookings(db, log);
+            SeedEmployee(userManager, log);
         }
 
         private static void DeleteAndCreateDatabase(ApplicationDbContext db)
@@ -34,17 +25,20 @@ namespace GUIEX2PROJECT.Data
 
         private static void SeedRooms(ApplicationDbContext db, ILogger log)
         {
+            var r = db.Rooms.FirstOrDefault();
+            if (r != null) return;
             for (var i = 1; i < 10; i++)
             {
-                var r = new Room() {RoomNumber = i};
-                db.Rooms.Add(r);
+                db.Rooms.Add(new Room(){RoomNumber = i});
                 db.SaveChangesAsync().Wait();
             }
         }
 
-        private static void SeedReservations(ApplicationDbContext db, ILogger log)
+        private static void SeedRoomBookings(ApplicationDbContext db, ILogger log)
         {
-            var rb = new RoomBooking()
+            var rb = db.RoomBookings.FirstOrDefault();
+            if (rb != null) return;
+            rb = new RoomBooking()
             {
                 RoomNumber = 1,
                 NumOfAdultsInRoom = 2,
@@ -76,6 +70,7 @@ namespace GUIEX2PROJECT.Data
             string password = "Thisisthecode_1";
 
             //add chef
+            if (userManager.FindByNameAsync(chefEmail).Result != null) return true;
             var chef = new Employee
             {
                 UserName = "gonzales@gmail.com",
@@ -126,6 +121,7 @@ namespace GUIEX2PROJECT.Data
                 var addClaimResult = userManager.AddClaimAsync(chef, waiterClaim);
                 addClaimResult.Wait();
             }
+
             return true;
         }
     }

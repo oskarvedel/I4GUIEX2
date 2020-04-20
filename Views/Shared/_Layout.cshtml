@@ -32,11 +32,22 @@
                 
             }
             <a asp-controller="Home" asp-action="Index">HomePage</a>
-            <a asp-controller="Reception" asp-action="Index">Reception</a>
-            <a asp-controller="Restaurant" asp-action="Index">Restaurant</a>
-            <a asp-controller="Kitchen" asp-action="Index">Kitchen</a>
-
-        </div>
+            
+            @if(User.HasClaim("Receptionist", "Yes"))
+            {
+                 <a asp-controller="Reception" asp-action="Index">Reception</a>
+            }
+            
+            @if (User.HasClaim("Waiter", "Yes"))
+            {
+                <a asp-controller="Restaurant" asp-action="Index">Restaurant</a>
+            }
+            
+            @if (User.HasClaim("Chef", "Yes"))
+            {
+                <a asp-controller="Kitchen" asp-action="Index">Kitchen</a>
+            }
+                                                              </div>
 
         <div id="content">
 

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<GUIEX2PROJECT.Models.RoomBooking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+@*<div class="form-group">
+    <label asp-for="RoomNumber" class="control-label"></label>
+    <select asp-for="RoomNumber" class ="form-control" asp-items="ViewBag.RoomNumber"></select>*@
+@*</div>*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var item in Model)
+    {
+    }
+    </tbody>
+</table>

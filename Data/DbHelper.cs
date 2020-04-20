@@ -27,66 +27,17 @@ namespace GUIEX2PROJECT.Data
             db.Database.EnsureCreated();
         }
 
-        private static void SeedRoomsAndReservations(ApplicationDbContext db)
+        private static async void SeedRoomsAndReservations(ApplicationDbContext db)
         {
             var r = db.Rooms.FirstOrDefault();
             if (r == null)
             {
-                var rooms = new List<Room>();
-                r = new Room()
+                for (var i = 0; i < 10; i++)
                 {
-                    RoomNumber = 1
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 2
-                };
-                rooms.Add(r);
-
-                r = new Room()
-                {
-                    RoomNumber = 3
-                };
-                rooms.Add(r);
-
-                r = new Room()
-                {
-                    RoomNumber = 4
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 5
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 6
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 7
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 8
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 9
-                };
-                rooms.Add(r);
-                r = new Room()
-                {
-                    RoomNumber = 10
-                };
-                rooms.Add(r);
-                db.Rooms.AddRange(rooms);
-                db.SaveChangesAsync();
+                    r = new Room() {RoomNumber = 1};
+                    db.Rooms.Add(r);
+                    await db.SaveChangesAsync();
+                }
 
                 var rb = db.RoomBookings.FirstOrDefault();
                 if (rb == null)
@@ -103,7 +54,8 @@ namespace GUIEX2PROJECT.Data
                         NumberOfAdultsCheckedInToBreakfast = 1,
                         NumberOfChildrenCheckedInToBreakfast = 1
                     };
-                    roomBookings.Add(rb);
+                    db.RoomBookings.Add(rb);
+                    await db.SaveChangesAsync();
                     rb = new RoomBooking()
                     {
                         RoomId = 2,
@@ -115,57 +67,51 @@ namespace GUIEX2PROJECT.Data
                         NumberOfAdultsCheckedInToBreakfast = 1,
                         NumberOfChildrenCheckedInToBreakfast = 1
                     };
-                    roomBookings.Add(rb);
-
-                    foreach (var t1 in roomBookings)
-                    {
-                        db.RoomBookings.Add(t1);
-                        var task = Task.Delay(1000).ContinueWith(t => db.SaveChangesAsync());
-                    }
+                    db.RoomBookings.Add(rb);
+                    await db.SaveChangesAsync();
                 }
             }
         }
 
-        private static void SeedEmployees(UserManager<Employee> userManager)
+        private static async void SeedEmployees(UserManager<Employee> userManager)
         {
-            string password = "nicepw_1";
-
-            var user = new Employee
+            string password = "thisisthecode_1";
+            
+            //add chef
+            var chef = new Employee
             {
                 UserName = "gonzales@gmail.com",
                 Email = "gonzales@gmail.com",
                 EmployeeId = "1",
                 EmployeeType = EmployeeEnum.Chef
             };
+            await userManager.CreateAsync(chef, password);
+            var chefClaim = new Claim("Receptionist", "Yes");
+            await userManager.AddClaimAsync(chef, chefClaim);
 
-            var result = userManager.CreateAsync(user, password).Result;
-            user = new Employee
+            //add receptionist
+            var receptionist = new Employee
             {
                 UserName = "alina@gmail.com",
                 Email = "alina@gmail.com",
                 EmployeeId = "2",
                 EmployeeType = EmployeeEnum.Receptionist
             };
-            result = userManager.CreateAsync(user, password).Result;
-            if (result.Succeeded)
-            {
-                var receptionistClaim = new Claim("Receptionist", "Yes");
-                userManager.AddClaimAsync(user, receptionistClaim);
-            }
+            await userManager.CreateAsync(receptionist, password);
+            var receptionistClaim = new Claim("Receptionist", "Yes");
+            await userManager.AddClaimAsync(chef, receptionistClaim);
 
-            user = new Employee
+            //add employee
+            var waiter = new Employee
             {
                 UserName = "alina@gmail.com",
                 Email = "alina@gmail.com",
                 EmployeeId = "3",
                 EmployeeType = EmployeeEnum.Waiter
             };
-            result = userManager.CreateAsync(user, password).Result;
-            if (result.Succeeded)
-            {
-                var waiterClaim = new Claim("Waiter", "Yes");
-                userManager.AddClaimAsync(user, waiterClaim);
-            }
+            await userManager.CreateAsync(waiter, password);
+            var waiterClaim = new Claim("Receptionist", "Yes");
+            await userManager.AddClaimAsync(chef, waiterClaim);
         }
     }
 }

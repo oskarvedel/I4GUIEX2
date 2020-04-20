@@ -42,17 +42,17 @@ namespace GUIEX2PROJECT
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(
-                    "ReceptionistAccess",
+                    "ReceptionAccess",
                     policyBuilder => policyBuilder
-                        .RequireClaim("ReceptionistClaim"));
+                        .RequireClaim("Receptionist"));
                 options.AddPolicy(
                     "RestaurantAccess",
                     policyBuilder => policyBuilder
-                        .RequireClaim("WaiterClaim"));
+                        .RequireClaim("Waiter"));
                 options.AddPolicy(
                     "KitchenAccess",
                     policyBuilder => policyBuilder
-                        .RequireClaim("ChefClaim"));
+                        .RequireClaim("Chef"));
             });
         }
         

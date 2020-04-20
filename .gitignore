@@ -360,3 +360,4 @@ MigrationBackup/
 .idea
 appsettings.json
 /Migrations/
+/appsettings.json~6097f0285ce2e48364b903cd8a28a1378f99c539

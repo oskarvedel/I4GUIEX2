@@ -42,7 +42,6 @@ namespace GUIEX2PROJECT.Data
                 var rb = db.RoomBookings.FirstOrDefault();
                 if (rb == null)
                 {
-                    var roomBookings = new List<RoomBooking>();
                     rb = new RoomBooking()
                     {
                         RoomId = 1,
@@ -85,9 +84,9 @@ namespace GUIEX2PROJECT.Data
                 EmployeeId = "1",
                 EmployeeType = EmployeeEnum.Chef
             };
-            await userManager.CreateAsync(chef, password);
+            userManager.CreateAsync(chef, password);
             var chefClaim = new Claim("Receptionist", "Yes");
-            await userManager.AddClaimAsync(chef, chefClaim);
+            userManager.AddClaimAsync(chef, chefClaim);
 
             //add receptionist
             var receptionist = new Employee
@@ -97,9 +96,9 @@ namespace GUIEX2PROJECT.Data
                 EmployeeId = "2",
                 EmployeeType = EmployeeEnum.Receptionist
             };
-            await userManager.CreateAsync(receptionist, password);
+            userManager.CreateAsync(receptionist, password);
             var receptionistClaim = new Claim("Receptionist", "Yes");
-            await userManager.AddClaimAsync(chef, receptionistClaim);
+            userManager.AddClaimAsync(chef, receptionistClaim);
 
             //add employee
             var waiter = new Employee
@@ -109,9 +108,9 @@ namespace GUIEX2PROJECT.Data
                 EmployeeId = "3",
                 EmployeeType = EmployeeEnum.Waiter
             };
-            await userManager.CreateAsync(waiter, password);
+            userManager.CreateAsync(waiter, password);
             var waiterClaim = new Claim("Receptionist", "Yes");
-            await userManager.AddClaimAsync(chef, waiterClaim);
+            userManager.AddClaimAsync(chef, waiterClaim);
         }
     }
 }

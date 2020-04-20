@@ -69,8 +69,8 @@ namespace GUIEX2PROJECT.Data
 
         private static bool SeedEmployee(UserManager<Employee> userManager, ILogger log)
         {
-            string chefEmail = "gonzales@gmail.com";
             string adminEmail = "admin@gmail.com";
+            string chefEmail = "gonzales@gmail.com";
             string receptionistEmail = "alina@gmail.com";
             string waiterEmail = "thomaslarsen@gmail.com";
             string password = "Koden_1";
@@ -84,8 +84,8 @@ namespace GUIEX2PROJECT.Data
             {
                 var admin = new Employee
                 {
-                    UserName = "admin@gmail.com",
-                    Email = "admin@gmail.com",
+                    UserName = adminEmail,
+                    Email = adminEmail,
                     EmployeeId = "1",
                     EmployeeType = EmployeeEnum.Admin,
                 };
@@ -107,8 +107,8 @@ namespace GUIEX2PROJECT.Data
             {
                 var chef = new Employee
                 {
-                    UserName = "gonzales@gmail.com",
-                    Email = "gonzales@gmail.com",
+                    UserName = chefEmail,
+                    Email = chefEmail,
                     EmployeeId = "2",
                     EmployeeType = EmployeeEnum.Chef
                 };

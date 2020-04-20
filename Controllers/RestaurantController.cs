@@ -10,6 +10,7 @@ using GUIEX2PROJECT.Models;
 
 namespace GUIEX2PROJECT.Controllers
 {
+    [Authorize(Policy = "RestaurantAccess")]
     public class RestaurantController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -11,9 +11,9 @@ namespace GUIEX2PROJECT.Models
         public DateTime Date { get; set; }
 
         [DisplayName(" Children In Room")]
-        public int NumOfChildrenInRoom  { get; set; }
+        public int NumOfChildrenInRoom { get; set; }
         [DisplayName(" Adults In Room")]
-        public int NumOfAdultsInRoom  { get; set; }
+        public int NumOfAdultsInRoom { get; set; }
         [DisplayName(" Child Breakfast Reservations ")]
         public int NumberOfChildBreakfastReservations { get; set; }
         [DisplayName(" Adult Breakfast Reservations ")]
@@ -25,6 +25,11 @@ namespace GUIEX2PROJECT.Models
         [DisplayName(" Room ")]
         public Room Room { get; set; }
         public int RoomNumber { get; set; }
-        
+
+        public int TotalChildrenNotCheckedIn { get; set; }
+        public int TotalAdultsNotCheckedIn { get; set; }
+        public int TotalNotCheckedIn { get; set; }
+
+
     }
 }

@@ -7,28 +7,56 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GUIEX2PROJECT.Data;
 using GUIEX2PROJECT.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace GUIEX2PROJECT.Controllers
 {
-    [Authorize(Policy = "RestaurantAccess")]
-    public class RestaurantController : Controller
+    public class KitchenController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RestaurantController(ApplicationDbContext context)
+        public KitchenController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Restaurant
+        // GET: Kitchen
         public async Task<IActionResult> Index()
         {
+            var TotalChildren = 0;
+            var TotalAdults = 0;
+            var TotalCheckedIn = 0;
+
+            var TotalChildrenExpected = 0;
+            var TotalAdultsExpected = 0;
+            var TotalCheckedInExpected = 0;
             var applicationDbContext = _context.RoomBookings.Include(r => r.Room);
-            return View(await applicationDbContext.ToListAsync());
+            List<RoomBooking> test1 = await applicationDbContext.ToListAsync();
+
+            test1.ForEach(g =>
+            {
+                TotalChildren += g.NumberOfChildrenCheckedInToBreakfast;
+                TotalAdults += g.NumberOfAdultsCheckedInToBreakfast;
+            });
+            TotalCheckedIn = TotalChildren + TotalAdults;
+
+            test1.ForEach(g =>
+            {
+                TotalChildrenExpected += g.NumberOfChildBreakfastReservations;
+                TotalAdultsExpected += g.NumberOfAdultBreakfastReservations;
+            });
+            TotalCheckedInExpected = TotalChildrenExpected + TotalAdultsExpected;
+
+            test1.ForEach(g =>
+            {
+                g.TotalAdultsNotCheckedIn = TotalAdultsExpected - TotalAdults;
+                g.TotalChildrenNotCheckedIn = TotalChildrenExpected - TotalChildren;
+                g.TotalNotCheckedIn = TotalCheckedInExpected - TotalCheckedIn;
+            });
+           
+            return View(test1);
         }
 
-        // GET: Restaurant/Details/5
+        // GET: Kitchen/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,19 +75,19 @@ namespace GUIEX2PROJECT.Controllers
             return View(roomBooking);
         }
 
-        // GET: Restaurant/Create
+        // GET: Kitchen/Create
         public IActionResult Create()
         {
             ViewData["RoomNumber"] = new SelectList(_context.Rooms, "RoomId", "RoomId");
             return View();
         }
 
-        // POST: Restaurant/Create
+        // POST: Kitchen/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber")] RoomBooking roomBooking)
+        public async Task<IActionResult> Create([Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn")] RoomBooking roomBooking)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +99,7 @@ namespace GUIEX2PROJECT.Controllers
             return View(roomBooking);
         }
 
-        // GET: Restaurant/Edit/5
+        // GET: Kitchen/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,12 +116,12 @@ namespace GUIEX2PROJECT.Controllers
             return View(roomBooking);
         }
 
-        // POST: Restaurant/Edit/5
+        // POST: Kitchen/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber")] RoomBooking roomBooking)
+        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn")] RoomBooking roomBooking)
         {
             if (id != roomBooking.BookingId)
             {
@@ -124,7 +152,7 @@ namespace GUIEX2PROJECT.Controllers
             return View(roomBooking);
         }
 
-        // GET: Restaurant/Delete/5
+        // GET: Kitchen/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,7 +171,7 @@ namespace GUIEX2PROJECT.Controllers
             return View(roomBooking);
         }
 
-        // POST: Restaurant/Delete/5
+        // POST: Kitchen/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

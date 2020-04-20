@@ -93,7 +93,7 @@ namespace GUIEX2PROJECT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber")] RoomBooking roomBooking)
+        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,RoomNumber")] RoomBooking roomBooking)
         {
             if (id != roomBooking.BookingId)
             {

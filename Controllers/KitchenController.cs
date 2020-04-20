@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GUIEX2PROJECT.Data;
 using GUIEX2PROJECT.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GUIEX2PROJECT.Controllers
 {
+    [Authorize(Policy = "KitchenAccess")]
     public class KitchenController : Controller
     {
         private readonly ApplicationDbContext _context;

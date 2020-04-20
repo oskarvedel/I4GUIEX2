@@ -5,10 +5,11 @@
 }
 
 <h2>Index</h2>
+<div class="form-group">
+    <label asp-for="RoomNumber" class="control-label"></label>
+    <select asp-for="RoomNumber" class ="form-control" asp-items="ViewBag.RoomNumber"></select>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -36,14 +37,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
     
     @foreach (var item in Model)
     {
-        Response.Write(item.membername+"<===>"+item.total+"<br/>");
     }
     </tbody>
 </table>

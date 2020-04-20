@@ -1,0 +1,87 @@
+﻿@model GUIEX2PROJECT.Models.RoomBooking
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RoomBooking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfChildrenInRoom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfAdultsInRoom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfChildBreakfastReservations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAdultBreakfastReservations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAdultsCheckedInToBreakfast)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalChildrenNotCheckedIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalChildrenNotCheckedIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAdultsNotCheckedIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalAdultsNotCheckedIn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNotCheckedIn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalNotCheckedIn)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BookingId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

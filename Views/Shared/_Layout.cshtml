@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
 <!DOCTYPE html>
+
+@inject SignInManager<GUIEX2PROJECT.Models.Employee> SignInManager
+@inject UserManager<GUIEX2PROJECT.Models.Employee> UserManager
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,8 +16,21 @@
         <header>
         </header>
         <div class="topnav">
-            <a asp-area="Identity" asp-page="/Account/Register">Register</a>
-            <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+
+                    <button type="submit"> @UserManager.GetUserName(User)! - Logout</button>
+                </form>
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                    <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                </ul>
+            }
             <a asp-controller="Home" asp-action="Index">HomePage</a>
             <a asp-controller="Reception" asp-action="Index">Reception</a>
             <a asp-controller="Restaurant" asp-action="Index">Restaurant</a>

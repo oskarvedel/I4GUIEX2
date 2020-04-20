@@ -17,8 +17,8 @@ namespace GUIEX2PROJECT.Data
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager)
         {
             //DeleteAndCreateDatabase(db);
-            //SeedRoomsAndReservations(db);
-            //SeedEmployees(userManager);
+            SeedRoomsAndReservations(db);
+            SeedEmployees(userManager);
         }
 
         private static void DeleteAndCreateDatabase(ApplicationDbContext db)
@@ -155,8 +155,8 @@ namespace GUIEX2PROJECT.Data
 
             user = new Employee
             {
-                UserName = "alina@gmail.com",
-                Email = "alina@gmail.com",
+                UserName = "alina2@gmail.com",
+                Email = "alina2@gmail.com",
                 EmployeeId = "3",
                 EmployeeType = EmployeeEnum.Waiter
             };

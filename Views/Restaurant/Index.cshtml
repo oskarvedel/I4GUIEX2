@@ -4,24 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-@*<div class="form-group">
-    <label asp-for="RoomNumber" class="control-label"></label>
-    <select asp-for="RoomNumber" class ="form-control" asp-items="ViewBag.RoomNumber"></select>*@
-@*</div>*@
+<h2>Restaurant</h2>
 
+
+</p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
             </th>
@@ -37,12 +35,40 @@
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-    
-    @foreach (var item in Model)
-    {
-    }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.NumOfChildrenInRoom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfAdultsInRoom)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfChildrenCheckedInToBreakfast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfAdultsCheckedInToBreakfast)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookingId">Check guests in!</a>
+            </td> 
+        </tr>
+}
     </tbody>
 </table>

@@ -18,8 +18,8 @@ namespace GUIEX2PROJECT.Data
             {
                 UserName = "gonzalesthechef",
                 Email = "gonzales@gmail.com",
-                EmployeeId = "1",
-                EmployeeType = EmployeeEnum.Chef
+                //EmployeeId = "1",
+                //EmployeeType = EmployeeEnum.Chef
             };
 
             IdentityResult result = userManager.CreateAsync(user, password).Result;

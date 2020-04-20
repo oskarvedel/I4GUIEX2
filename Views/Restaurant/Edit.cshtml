@@ -1,0 +1,69 @@
+﻿@model GUIEX2PROJECT.Models.RoomBooking
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>RoomBooking</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookingId" />
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfChildrenInRoom" class="control-label"></label>
+                <input asp-for="NumOfChildrenInRoom" class="form-control" />
+                <span asp-validation-for="NumOfChildrenInRoom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumOfAdultsInRoom" class="control-label"></label>
+                <input asp-for="NumOfAdultsInRoom" class="form-control" />
+                <span asp-validation-for="NumOfAdultsInRoom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfChildBreakfastReservations" class="control-label"></label>
+                <input asp-for="NumberOfChildBreakfastReservations" class="form-control" />
+                <span asp-validation-for="NumberOfChildBreakfastReservations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfAdultBreakfastReservations" class="control-label"></label>
+                <input asp-for="NumberOfAdultBreakfastReservations" class="form-control" />
+                <span asp-validation-for="NumberOfAdultBreakfastReservations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfChildrenCheckedInToBreakfast" class="control-label"></label>
+                <input asp-for="NumberOfChildrenCheckedInToBreakfast" class="form-control" />
+                <span asp-validation-for="NumberOfChildrenCheckedInToBreakfast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfAdultsCheckedInToBreakfast" class="control-label"></label>
+                <input asp-for="NumberOfAdultsCheckedInToBreakfast" class="form-control" />
+                <span asp-validation-for="NumberOfAdultsCheckedInToBreakfast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomNumber" class="control-label"></label>
+                <select asp-for="RoomNumber" class="form-control" asp-items="ViewBag.RoomNumber"></select>
+                <span asp-validation-for="RoomNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,49 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using GUIEX2PROJECT.Data;
+using GUIEX2PROJECT.Models;
+
+namespace GUIEX2PROJECT.Controllers
+{
+    public class KitchenController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public KitchenController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Kitchen
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.RoomBookings.Include(r => r.Room);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Kitchen/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var roomBooking = await _context.RoomBookings
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(m => m.BookingId == id);
+            if (roomBooking == null)
+            {
+                return NotFound();
+            }
+
+            return View(roomBooking);
+        }
+
+    }
+}

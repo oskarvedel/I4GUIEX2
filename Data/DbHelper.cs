@@ -82,8 +82,8 @@ namespace GUIEX2PROJECT.Data
             {
                 UserName = "gonzales@gmail.com",
                 Email = "gonzales@gmail.com",
-                EmployeeId = "1",
-                EmployeeType = EmployeeEnum.Chef
+                //EmployeeId = "1",
+                //EmployeeType = EmployeeEnum.Chef
             };
             await userManager.CreateAsync(chef, password);
             var chefClaim = new Claim("Receptionist", "Yes");

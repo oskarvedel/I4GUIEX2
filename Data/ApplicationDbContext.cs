@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace GUIEX2PROJECT.Data
 {
-	public class ApplicationDbContext : IdentityDbContext<Employee>
-	{
-		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-			: base(options)
-		{
-		}
+    public class ApplicationDbContext : IdentityDbContext<Employee>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomBooking> RoomBookings { get; set; }
@@ -36,6 +36,7 @@ namespace GUIEX2PROJECT.Data
 
             modelbuilder.Entity<Room>()
                 .Property(r => r.RoomNumber);
+
 
         }
     }

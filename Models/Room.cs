@@ -6,6 +6,6 @@ namespace GUIEX2PROJECT.Models
     {
         public int RoomId { get; set; }
         public int RoomNumber { get; set; }
-        public List<RoomBooking> RoomBookings{ get; set; }
+        public List<RoomBooking> RoomBookings { get; set; }
     }
 }

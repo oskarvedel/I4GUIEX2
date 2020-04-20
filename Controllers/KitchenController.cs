@@ -25,25 +25,5 @@ namespace GUIEX2PROJECT.Controllers
             var applicationDbContext = _context.RoomBookings.Include(r => r.Room);
             return View(await applicationDbContext.ToListAsync());
         }
-
-        // GET: Kitchen/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var roomBooking = await _context.RoomBookings
-                .Include(r => r.Room)
-                .FirstOrDefaultAsync(m => m.BookingId == id);
-            if (roomBooking == null)
-            {
-                return NotFound();
-            }
-
-            return View(roomBooking);
-        }
-
     }
 }

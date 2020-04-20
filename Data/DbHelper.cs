@@ -11,7 +11,7 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager, ILogger log)
         {
-            DeleteAndCreateDatabase(db);
+            //DeleteAndCreateDatabase(db);
             SeedRooms(db, log);
             SeedRoomBookings(db, log);
             SeedEmployee(userManager, log);

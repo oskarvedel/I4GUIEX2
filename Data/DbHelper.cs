@@ -85,7 +85,7 @@ namespace GUIEX2PROJECT.Data
                     RoomNumber = 10
                 };
                 rooms.Add(r);
-                foreach (Room in rooms)
+                foreach (var Room in rooms)
                 {
                     db.Rooms.Add(Room);
                 }

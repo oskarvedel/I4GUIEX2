@@ -11,12 +11,12 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager, ILogger log)
         {
-            //DeleteAndCreateDatabase(db);
+            DeleteAndCreateDatabase(db);
             SeedRooms(db, log);
             SeedRoomBookings(db, log);
             SeedEmployee(userManager, log);
         }
-
+        
         private static void DeleteAndCreateDatabase(ApplicationDbContext db)
         {
             db.Database.EnsureDeleted();
@@ -29,7 +29,7 @@ namespace GUIEX2PROJECT.Data
             if (r != null) return;
             for (var i = 1; i < 10; i++)
             {
-                db.Rooms.Add(new Room(){RoomNumber = i});
+                db.Rooms.Add(new Room() {RoomNumber = i});
                 db.SaveChangesAsync().Wait();
             }
         }
@@ -67,59 +67,94 @@ namespace GUIEX2PROJECT.Data
         private static bool SeedEmployee(UserManager<Employee> userManager, ILogger log)
         {
             string chefEmail = "gonzales@gmail.com";
-            string password = "Thisisthecode_1";
+            string adminEmail = "admin@gmail.com";
+            string receptionistEmail = "alina@gmail.com";
+            string waiterEmail = "thomaslarsen@gmail.com";
+            string password = "Koden_1";
+            
+            var chefClaim = new Claim("Chef", "Yes");
+            var receptionistClaim = new Claim("Receptionist", "Yes");
+            var waiterClaim = new Claim("Waiter", "Yes");
+
+            //add admin
+            if (userManager.FindByNameAsync(adminEmail).Result == null)
+            {
+                var admin = new Employee
+                {
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com",
+                    EmployeeId = "1",
+                    EmployeeType = EmployeeEnum.Admin,
+                };
+                IdentityResult result = userManager.CreateAsync
+                    (admin, password).Result;
+                if (result.Succeeded)
+                {
+                    var addClaimResult = userManager.AddClaimAsync(admin, chefClaim);
+                    addClaimResult.Wait();
+                    addClaimResult = userManager.AddClaimAsync(admin, waiterClaim);
+                    addClaimResult.Wait();
+                    addClaimResult = userManager.AddClaimAsync(admin, receptionistClaim);
+                    addClaimResult.Wait();
+                }
+            }
 
             //add chef
-            if (userManager.FindByNameAsync(chefEmail).Result != null) return true;
-            var chef = new Employee
+            if (userManager.FindByNameAsync(chefEmail).Result == null)
             {
-                UserName = "gonzales@gmail.com",
-                Email = "gonzales@gmail.com",
-                EmployeeId = "1",
-                EmployeeType = EmployeeEnum.Chef
-            };
-            IdentityResult result = userManager.CreateAsync
-                (chef, password).Result;
-            if (result.Succeeded)
-            {
-                var chefClaim = new Claim("Chef", "Yes");
-                var addClaimResult = userManager.AddClaimAsync(chef, chefClaim);
-                addClaimResult.Wait();
+                var chef = new Employee
+                {
+                    UserName = "gonzales@gmail.com",
+                    Email = "gonzales@gmail.com",
+                    EmployeeId = "2",
+                    EmployeeType = EmployeeEnum.Chef
+                };
+                IdentityResult result = userManager.CreateAsync
+                    (chef, password).Result;
+                if (result.Succeeded)
+                {
+                    var addClaimResult = userManager.AddClaimAsync(chef, chefClaim);
+                    addClaimResult.Wait();
+                }
             }
 
             //add receptionist
-            var receptionist = new Employee
+            if (userManager.FindByNameAsync(receptionistEmail).Result == null)
             {
-                UserName = "alina@gmail.com",
-                Email = "alina@gmail.com",
-                EmployeeId = "2",
-                EmployeeType = EmployeeEnum.Receptionist
-            };
+                var receptionist = new Employee
+                {
+                    UserName = receptionistEmail,
+                    Email = receptionistEmail,
+                    EmployeeId = "3",
+                    EmployeeType = EmployeeEnum.Receptionist
+                };
 
-            result = userManager.CreateAsync
-                (receptionist, password).Result;
-            if (result.Succeeded)
-            {
-                var receptionistClaim = new Claim("Receptionist", "Yes");
-                var addClaimResult = userManager.AddClaimAsync(receptionist, receptionistClaim);
-                addClaimResult.Wait();
+                IdentityResult result = userManager.CreateAsync
+                    (receptionist, password).Result;
+                if (result.Succeeded)
+                {
+                    var addClaimResult = userManager.AddClaimAsync(receptionist, receptionistClaim);
+                    addClaimResult.Wait();
+                }
             }
 
             //add waiter
-            var waiter = new Employee
+            if (userManager.FindByNameAsync(waiterEmail).Result == null)
             {
-                UserName = "thomaslarsen@gmail.com",
-                Email = "thomaslarsen@gmail.com",
-                EmployeeId = "3",
-                EmployeeType = EmployeeEnum.Waiter
-            };
-            result = userManager.CreateAsync
-                (waiter, password).Result;
-            if (result.Succeeded)
-            {
-                var waiterClaim = new Claim("Waiter", "Yes");
-                var addClaimResult = userManager.AddClaimAsync(waiter, waiterClaim);
-                addClaimResult.Wait();
+                var waiter = new Employee
+                {
+                    UserName = waiterEmail,
+                    Email = waiterEmail,
+                    EmployeeId = "4",
+                    EmployeeType = EmployeeEnum.Waiter
+                };
+                IdentityResult result = userManager.CreateAsync
+                    (waiter, password).Result;
+                if (result.Succeeded)
+                {
+                    var addClaimResult = userManager.AddClaimAsync(waiter, waiterClaim);
+                    addClaimResult.Wait();
+                }
             }
 
             return true;

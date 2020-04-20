@@ -4,6 +4,7 @@ namespace GUIEX2PROJECT.Models
 {
     public enum EmployeeEnum
     {
+        Admin,
         Waiter,
         Receptionist,
         Chef

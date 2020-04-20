@@ -101,15 +101,15 @@ namespace GUIEX2PROJECT.Data
             if (result.Succeeded)
             {
                 var receptionistClaim = new Claim("Receptionist", "Yes");
-                var addClaimResult = userManager.AddClaimAsync(chef, receptionistClaim);
+                var addClaimResult = userManager.AddClaimAsync(receptionist, receptionistClaim);
                 addClaimResult.Wait();
             }
 
             //add waiter
             var waiter = new Employee
             {
-                UserName = "jegerboesse@gmail.com",
-                Email = "jegerboesse@gmail.com",
+                UserName = "thomaslarsen@gmail.com",
+                Email = "thomaslarsen@gmail.com",
                 EmployeeId = "3",
                 EmployeeType = EmployeeEnum.Waiter
             };
@@ -118,7 +118,7 @@ namespace GUIEX2PROJECT.Data
             if (result.Succeeded)
             {
                 var waiterClaim = new Claim("Waiter", "Yes");
-                var addClaimResult = userManager.AddClaimAsync(chef, waiterClaim);
+                var addClaimResult = userManager.AddClaimAsync(waiter, waiterClaim);
                 addClaimResult.Wait();
             }
 

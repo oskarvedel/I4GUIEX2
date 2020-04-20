@@ -19,10 +19,10 @@ namespace GUIEX2PROJECT.Data
     {
         public static void SeedData(ApplicationDbContext db, UserManager<Employee> userManager, ILogger log)
         {
-            DeleteAndCreateDatabase(db);
+            //DeleteAndCreateDatabase(db);
             //SeedRooms(db, log);
-            //SeedReservations(db, log);
-            SeedEmployee(userManager, log);
+            SeedReservations(db, log);
+            //SeedEmployee(userManager, log);
             
         }
 
@@ -32,13 +32,13 @@ namespace GUIEX2PROJECT.Data
             db.Database.EnsureCreated();
         }
 
-        private static void SeedRooms(ApplicationDbContext db, ILogger log)
+        private static async void SeedRooms(ApplicationDbContext db, ILogger log)
         {
             for (var i = 0; i < 10; i++)
             {
                 var r = new Room() {RoomNumber = 1};
                 db.Rooms.Add(r);
-                db.SaveChangesAsync();
+                await db.SaveChangesAsync();
             }
         }
 
@@ -46,8 +46,7 @@ namespace GUIEX2PROJECT.Data
         {
             var rb = new RoomBooking()
             {
-                RoomId = 1,
-                BookingId = 1,
+                RoomNumber = 1,
                 NumOfAdultsInRoom = 2,
                 NumOfChildrenInRoom = 2,
                 NumberOfAdultBreakfastReservations = 1,
@@ -59,8 +58,7 @@ namespace GUIEX2PROJECT.Data
             await db.SaveChangesAsync();
             rb = new RoomBooking()
             {
-                RoomId = 2,
-                BookingId = 2,
+                RoomNumber = 2,
                 NumOfAdultsInRoom = 4,
                 NumOfChildrenInRoom = 1,
                 NumberOfAdultBreakfastReservations = 4,

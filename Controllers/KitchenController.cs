@@ -65,7 +65,7 @@ namespace GUIEX2PROJECT.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "RoomId", roomBooking.RoomId);
+            ViewData["RoomNumber"] = new SelectList(_context.Rooms, "RoomNumber", "RoomNumber", roomBooking.RoomNumber);
             return View(roomBooking);
         }
 
@@ -118,7 +118,7 @@ namespace GUIEX2PROJECT.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "RoomId", roomBooking.RoomId);
+            ViewData["RoomNumber"] = new SelectList(_context.Rooms, "RoomId", "RoomId", roomBooking.RoomId);
             return View(roomBooking);
         }
 

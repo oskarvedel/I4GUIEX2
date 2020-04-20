@@ -17,7 +17,7 @@ namespace GUIEX2PROJECT.Models
         public int NumberOfChildrenCheckedInToBreakfast { get; set; }
         public int NumberOfAdultsCheckedInToBreakfast { get; set; }
         public Room Room { get; set; }
-        public int RoomId { get; set; }
+        public int RoomNumber { get; set; }
         
     }
 }

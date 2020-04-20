@@ -50,10 +50,13 @@ h1 {
     text-align: center;
 }
 
-h2{
+h2 {
     text-align: center;
 }
-
+p {
+    align-content: center;
+    text-align: center;
+}
 
 
 /* Sticky footer styles

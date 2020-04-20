@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 <!DOCTYPE html>
-
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @inject SignInManager<GUIEX2PROJECT.Models.Employee> SignInManager
 @inject UserManager<GUIEX2PROJECT.Models.Employee> UserManager
 
@@ -26,10 +26,10 @@
             }
             else
             {
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-                    <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-                </ul>
+               
+                   
+                    <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+                
             }
             <a asp-controller="Home" asp-action="Index">HomePage</a>
             <a asp-controller="Reception" asp-action="Index">Reception</a>

@@ -53,7 +53,10 @@ h1 {
 h2 {
     text-align: center;
 }
-
+p {
+    align-content: center;
+    text-align: center;
+}
 
 
 /* Sticky footer styles

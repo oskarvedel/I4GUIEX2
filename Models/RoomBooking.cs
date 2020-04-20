@@ -30,6 +30,16 @@ namespace GUIEX2PROJECT.Models
         public int TotalAdultsNotCheckedIn { get; set; }
         public int TotalNotCheckedIn { get; set; }
 
+        public int TotalChildrenCheckedIN { get; set; }
+
+        public int TotalAdultsCheckedIn { get; set; }
+
+        public int TotalCheckedIn { get; set; }
+
+        public int TotalExpectedChildren { get; set; }
+        public int TotalExpectedAdults { get; set; }
+        public int TotalExpected { get; set; }
+
 
     }
 }

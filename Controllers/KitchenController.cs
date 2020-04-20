@@ -51,8 +51,14 @@ namespace GUIEX2PROJECT.Controllers
                 g.TotalAdultsNotCheckedIn = TotalAdultsExpected - TotalAdults;
                 g.TotalChildrenNotCheckedIn = TotalChildrenExpected - TotalChildren;
                 g.TotalNotCheckedIn = TotalCheckedInExpected - TotalCheckedIn;
+                g.TotalAdultsCheckedIn = TotalAdults;
+                g.TotalChildrenCheckedIN = TotalChildren;
+                g.TotalCheckedIn = TotalCheckedIn;
+                g.TotalExpectedAdults = TotalAdultsExpected;
+                g.TotalExpectedChildren = TotalChildrenExpected;
+                g.TotalExpected = TotalCheckedInExpected;
             });
-           
+
             return View(test1);
         }
 
@@ -87,7 +93,7 @@ namespace GUIEX2PROJECT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn")] RoomBooking roomBooking)
+        public async Task<IActionResult> Create([Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn,TotalChildrenCheckedIN,TotalAdultsCheckedIn,TotalCheckedIn,TotalExpectedChildren,TotalExpectedAdults,TotalExpected")] RoomBooking roomBooking)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +127,7 @@ namespace GUIEX2PROJECT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn")] RoomBooking roomBooking)
+        public async Task<IActionResult> Edit(int id, [Bind("BookingId,Date,NumOfChildrenInRoom,NumOfAdultsInRoom,NumberOfChildBreakfastReservations,NumberOfAdultBreakfastReservations,NumberOfChildrenCheckedInToBreakfast,NumberOfAdultsCheckedInToBreakfast,RoomNumber,TotalChildrenNotCheckedIn,TotalAdultsNotCheckedIn,TotalNotCheckedIn,TotalChildrenCheckedIN,TotalAdultsCheckedIn,TotalCheckedIn,TotalExpectedChildren,TotalExpectedAdults,TotalExpected")] RoomBooking roomBooking)
         {
             if (id != roomBooking.BookingId)
             {

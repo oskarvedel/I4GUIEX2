@@ -4,15 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Kitchen Page</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
@@ -35,7 +33,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TotalChildrenNotCheckedIn)
             </th>
@@ -45,13 +43,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.TotalNotCheckedIn)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalChildrenCheckedIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAdultsCheckedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCheckedIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExpectedChildren)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExpectedAdults)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExpected)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
@@ -74,7 +90,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomId)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalChildrenNotCheckedIn)
             </td>
@@ -85,10 +101,24 @@
                 @Html.DisplayFor(modelItem => item.TotalNotCheckedIn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                @Html.DisplayFor(modelItem => item.TotalChildrenCheckedIN)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAdultsCheckedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCheckedIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExpectedChildren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExpectedAdults)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExpected)
+            </td>
+
         </tr>
 }
     </tbody>

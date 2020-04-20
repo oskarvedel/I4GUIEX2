@@ -20,8 +20,7 @@ namespace GUIEX2PROJECT.Controllers
         {
             _context = context;
         }
-
-        // GET: Kitchen
+        // GET: Kitchen//
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.RoomBookings.Include(r => r.Room);

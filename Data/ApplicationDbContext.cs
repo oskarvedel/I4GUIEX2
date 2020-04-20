@@ -14,7 +14,6 @@ namespace GUIEX2PROJECT.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomBooking> RoomBookings { get; set; }
-        //test
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
@@ -37,6 +36,7 @@ namespace GUIEX2PROJECT.Data
 
             modelbuilder.Entity<Room>()
                 .Property(r => r.RoomNumber);
+
         }
     }
 }

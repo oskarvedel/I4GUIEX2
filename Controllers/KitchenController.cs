@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GUIEX2PROJECT.Data;
 using GUIEX2PROJECT.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace GUIEX2PROJECT.Controllers
 {
-    [Authorize(Policy = "KitchenAccess")]
     public class KitchenController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,11 +18,33 @@ namespace GUIEX2PROJECT.Controllers
         {
             _context = context;
         }
-        // GET: Kitchen//
+
+        // GET: Kitchen
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.RoomBookings.Include(r => r.Room);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Kitchen/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var roomBooking = await _context.RoomBookings
+                .Include(r => r.Room)
+                .FirstOrDefaultAsync(m => m.BookingId == id);
+            
+
+            if (roomBooking == null)
+            {
+                return NotFound();
+            }
+
+            return View(roomBooking);
         }
     }
 }

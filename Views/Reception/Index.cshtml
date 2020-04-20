@@ -16,12 +16,23 @@
                 @Html.DisplayNameFor(model => model.Date)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
             </th>
-
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
@@ -36,12 +47,23 @@
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
+                @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
+                @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
             </td>
-
+            <td>
+                @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomId)
             </td>

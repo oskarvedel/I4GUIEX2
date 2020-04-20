@@ -18,7 +18,7 @@ namespace GUIEX2PROJECT.Data
         {
             //DeleteAndCreateDatabase(db);
             //SeedRoomsAndReservations(db);
-            //SeedEmployees(userManager);
+            SeedEmployees(userManager);
         }
 
         private static void DeleteAndCreateDatabase(ApplicationDbContext db)
@@ -75,15 +75,15 @@ namespace GUIEX2PROJECT.Data
 
         private static async void SeedEmployees(UserManager<Employee> userManager)
         {
-            string password = "thisisthecode_1";
+            string password = "Thisisthecode_1";
             
             //add chef
             var chef = new Employee
             {
                 UserName = "gonzales@gmail.com",
                 Email = "gonzales@gmail.com",
-                //EmployeeId = "1",
-                //EmployeeType = EmployeeEnum.Chef
+                EmployeeId = "1",
+                EmployeeType = EmployeeEnum.Chef
             };
             await userManager.CreateAsync(chef, password);
             var chefClaim = new Claim("Receptionist", "Yes");

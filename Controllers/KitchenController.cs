@@ -22,8 +22,8 @@ namespace GUIEX2PROJECT.Controllers
         // GET: Kitchen
         public async Task<IActionResult> Index()
         {
-            var TotalChildren = 0;
-            var TotalAdults = 0;
+            var TotalChildrencheckin = 0;
+            var TotalAdultscheckin = 0;
             var TotalCheckedIn = 0;
 
             var TotalChildrenExpected = 0;
@@ -34,10 +34,10 @@ namespace GUIEX2PROJECT.Controllers
 
             test1.ForEach(g =>
             {
-                TotalChildren += g.NumberOfChildrenCheckedInToBreakfast;
-                TotalAdults += g.NumberOfAdultsCheckedInToBreakfast;
+                TotalChildrencheckin += g.NumberOfChildrenCheckedInToBreakfast;
+                TotalAdultscheckin += g.NumberOfAdultsCheckedInToBreakfast;
             });
-            TotalCheckedIn = TotalChildren + TotalAdults;
+            TotalCheckedIn = TotalChildrencheckin + TotalAdultscheckin;
 
             test1.ForEach(g =>
             {
@@ -48,11 +48,11 @@ namespace GUIEX2PROJECT.Controllers
 
             test1.ForEach(g =>
             {
-                g.TotalAdultsNotCheckedIn = TotalAdultsExpected - TotalAdults;
-                g.TotalChildrenNotCheckedIn = TotalChildrenExpected - TotalChildren;
+                g.TotalAdultsNotCheckedIn = TotalAdultsExpected - TotalAdultscheckin;
+                g.TotalChildrenNotCheckedIn = TotalChildrenExpected - TotalChildrencheckin;
                 g.TotalNotCheckedIn = TotalCheckedInExpected - TotalCheckedIn;
-                g.TotalAdultsCheckedIn = TotalAdults;
-                g.TotalChildrenCheckedIN = TotalChildren;
+                g.TotalAdultsCheckedIn = TotalAdultscheckin;
+                g.TotalChildrenCheckedIN = TotalChildrencheckin;
                 g.TotalCheckedIn = TotalCheckedIn;
                 g.TotalExpectedAdults = TotalAdultsExpected;
                 g.TotalExpectedChildren = TotalChildrenExpected;

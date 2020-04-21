@@ -10,30 +10,6 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfChildrenInRoom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfAdultsInRoom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfChildBreakfastReservations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfAdultBreakfastReservations)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfChildrenCheckedInToBreakfast)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfAdultsCheckedInToBreakfast)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TotalChildrenNotCheckedIn)
             </th>
@@ -66,31 +42,9 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    if (item.BookingId == 1)
+    {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfChildrenInRoom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfAdultsInRoom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultBreakfastReservations)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfChildrenCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfAdultsCheckedInToBreakfast)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.RoomId)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalChildrenNotCheckedIn)
             </td>
@@ -120,6 +74,7 @@
             </td>
 
         </tr>
+    }
 }
     </tbody>
 </table>

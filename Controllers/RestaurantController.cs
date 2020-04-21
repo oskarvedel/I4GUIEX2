@@ -152,9 +152,10 @@ namespace GUIEX2PROJECT.Controllers
         //    return RedirectToAction(nameof(Index));
         //}
 
-        //private bool RoomBookingExists(int id)
-        //{
-        //    return _context.RoomBookings.Any(e => e.BookingId == id);
+        private bool RoomBookingExists(int id)
+        {
+            return _context.RoomBookings.Any(e => e.BookingId == id);
+        }
         //}
     }
 }

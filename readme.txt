@@ -6,3 +6,5 @@ waiter: thomaslarsen@gmail.com
 
 password:
 Koden_1
+
+husk opdatering af Connection string, samt opdatering af databasen.
